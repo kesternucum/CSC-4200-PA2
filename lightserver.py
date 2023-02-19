@@ -24,12 +24,13 @@ def server():
     mysocket.listen()
     # print("Listening")
     INCONN, INADDR = mysocket.accept()
-    print("Received connection from {}{} =".format(INCONN, INADDR)) #
+    print("Received connection from (IP, PORT): {}".format(INADDR))
 
     with INCONN: #while incoming connection is active
 
         while True:
-            data = INCONN.recv(1024)
+            header = INCONN.recv(12)
+            data = INCONN.recv(8)
             print("Received data of length {}".format(len(data)))
             # Removed until it is deemed needed to have a break statement
             if not data:

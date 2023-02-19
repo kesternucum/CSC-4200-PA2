@@ -17,11 +17,11 @@ SERV_ADDR = args.s
 SERV_PORT = args.p
 LOGFILE = args.l
 
-msg1 = struct.pack("!III8s",17,0,5,b"Hello")
+msg1 = struct.pack("!III8s",17,1,8,b'HELLO')
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
     client_socket.connect((SERV_ADDR, SERV_PORT))
     client_socket.sendall(msg1)
     #client_socket.sendall(b"Hello World!")
-    return_data = client_socket.recv(1024)
-    print(return_data)
+    return_data = client_socket.recv(8).decode("utf-8")
+    print("Received Message: {}".format(return_data))
