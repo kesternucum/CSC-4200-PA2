@@ -1,0 +1,14 @@
+INFO:root:Received connection from (IP, PORT): ('10.254.12.140', 37188)
+INFO:root:Received Data: version: 17, message_type: 0, length: 5
+INFO:root:VERSION ACCEPTED
+INFO:root:Received Data: version: 17, message_type: 2, length: 8
+INFO:root:VERSION ACCEPTED
+INFO:root:EXECUTING SUPPORTED COMMAND: LIGHTOFF
+INFO:root:Returning SUCCESS
+INFO:root:Received connection from (IP, PORT): ('10.254.12.140', 44814)
+INFO:root:Received Data: version: 17, message_type: 0, length: 5
+INFO:root:VERSION ACCEPTED
+INFO:root:Received Data: version: 17, message_type: 2, length: 8
+INFO:root:VERSION ACCEPTED
+INFO:root:EXECUTING SUPPORTED COMMAND: LIGHTOFF
+INFO:root:Returning SUCCESS

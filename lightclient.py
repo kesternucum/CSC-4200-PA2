@@ -17,10 +17,13 @@ SERV_ADDR = args.s
 SERV_PORT = args.p
 LOGFILE = args.l
 
+logging.basicConfig(filename=LOGFILE, encoding='utf-8', level=logging.INFO)
+
 pkt_format = "!III8s"
 
 pkt1 = struct.pack(pkt_format,17,0,len(b'HELLO'),b'HELLO')
 pkt2 = struct.pack(pkt_format,17,1,len(b'LIGHTON'),b'LIGHTON')
+# pkt2 = struct.pack(pkt_format,17,2,len(b'LIGHTOFF'),b'LIGHTOFF')
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
 
