@@ -36,7 +36,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
     msg_type = header[1]
     msg_length = header[2]
 
-    print("Received Data - Version: {}, Message Type: {}, Length: {}".format(header[0], header[1], header[2]))
+    print("Received Data: version: {}, message_type: {}, Length: {}".format(header[0], header[1], header[2]))
 
     if version != 17:
         print("VERSION MISMATCH")
@@ -50,7 +50,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
         version = header[0]
         msg_type = header[1]
         msg_length = header[2]
-        print("Received Data - Version: {}, Message Type: {}, Length: {}".format(header[0], header[1], header[2]))
+        print("Received Data: version: {}, message_type: {}, Length: {}".format(header[0], header[1], header[2]))
 
         if version != 17:
             print("VERSION MISMATCH")

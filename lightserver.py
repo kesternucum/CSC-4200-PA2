@@ -1,12 +1,15 @@
 import socket
 import argparse
 import struct
+import logging
+from gpiozero import LED
 
 pkt_format = "!III8s"
 pkt_version = 17
 
 pkt1 = struct.pack(pkt_format,17,0,len(b'HELLO'),b'HELLO')
 pkt2 = struct.pack(pkt_format,17,1,len(b'SUCCESS'),b'SUCCESS')
+led = LED(4)
 
 def server():
     HOST = "127.0.0.1" # Already pre-set
@@ -38,7 +41,7 @@ def server():
                 version = header[0]
                 msg_type = header[1]
                 msg_length = header[2]
-                print("Received Data - Version: {}, Message Type: {}, Length: {}".format(version, msg_type, msg_length))
+                print("Received Data: version: {}, message_type: {}, length: {}".format(version, msg_type, msg_length))
                 msg = msg.decode("utf-8").strip('\0')
 
                 if version != 17:
@@ -51,10 +54,10 @@ def server():
                         INCONN.sendall(pkt1)
                     else:
                         if msg_type == 1:
-                            # turns on LED ... TODO: Add this
+                            led.on()
                             print("EXECUTING SUPPORTED COMMAND: {}".format(msg))
                         elif msg_type == 2:
-                            # turns off LED ... TODO: Add this
+                            led.off()
                             print("EXECUTING SUPPORTED COMMAND: {}".format(msg))
                         else:
                             print("IGNORING UNKNOWN COMMAND: {}".format(msg))
@@ -62,4 +65,4 @@ def server():
                         print("Returning SUCCESS")
 
 if __name__=='__main__':
-    server();
+    server()
